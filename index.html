@@ -146,7 +146,6 @@
             object-fit: cover;
         }
 
-        /* Video Popup Modal */
         .video-modal {
             display: none;
             position: fixed;
@@ -168,7 +167,6 @@
             box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
             width: 90%;
             max-width: 500px;
-            /* ✅ Made slightly smaller */
             animation: popIn 0.4s ease forwards;
             position: relative;
         }
@@ -179,24 +177,23 @@
         }
 
         .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ff477e;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
-    z-index: 10;
-}
-
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -209,24 +206,37 @@
         <button onclick="showNote()">💌 DABAEYE NAA!!</button>
     </div>
 
+    <!-- Romantic audio -->
+    <audio id="romanticAudio" loop>
+        <source src="HAPPY BIRTHDAY INSTRUMENTAL - 320.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="note" id="cuteNote">
         <p>
-            When i texted you first time...i didn't knew...ki this friendship is will come this farrrrrrr, i lobe you simi,
+            When i texted you first time...i didn't knew...ki this friendship is will come this farrrrrrr, i lobe you
+            simi,
             i really do, i never shaw a girl like you.
         </p>
         <p>
             You know what simi now proudly i can say ki i have a bestfriend who never leaves me, even tho i try to, its
-            always you, i hope one day i'll meet you, this is so sochne wali baat, ki i never met that girl who is my all
-            time bestieeeeeeeeeeeeeeeeeee, but definately i can't die without meeting you, i wish you verryyyyyyy happiest
-            birthday of all time baby, one day maybe i'll be not there for you but trust me i'll be always inside you, do
+            always you, i hope one day i'll meet you, this is so sochne wali baat, ki i never met that girl who is my
+            all
+            time bestieeeeeeeeeeeeeeeeeee, but definately i can't die without meeting you, i wish you verryyyyyyy
+            happiest
+            birthday of all time baby, one day maybe i'll be not there for you but trust me i'll be always inside you,
+            do
             you remember?? you're me and i'm you, maybe you're dhiraj of another universe, maybe i'm sumiran of another
             universe, maybe we are same, maybe we are 'i'.
         </p>
         <p>
             Trust me i never had a friend like you, i never had a friendship like...i have with you, maybe this is the
-            reason i don't know how to be a good friend or how to be a perfect friend, but i know one thing, i will never
-            find a friendship like this, maybe i don't deserve a friend like you, whatever just know one thing baby you are
-            verrrrrrrrrrrryyyyyyyyyyyyyyyyyyyy strong darlinggggggggggg, and just keep doing hardwork for my cutie aunty and
+            reason i don't know how to be a good friend or how to be a perfect friend, but i know one thing, i will
+            never
+            find a friendship like this, maybe i don't deserve a friend like you, whatever just know one thing baby you
+            are
+            verrrrrrrrrrrryyyyyyyyyyyyyyyyyyyy strong darlinggggggggggg, and just keep doing hardwork for my cutie aunty
+            and
             my cutie uncle, They deserves successfull sumiran, they loves you more than you, do you remember my those
             words??? "Mujhe ek beti chahiye bilkul teri jaisi"...esliye at the end tujhse sadi karlunga...
             🌸💓
@@ -252,7 +262,7 @@
         </div>
     </div>
 
-    <!-- CUTE VIDEO POPUP MODAL -->
+    <!-- Video Popup Modal -->
     <div class="video-modal" id="videoModal">
         <div class="video-frame">
             <button class="close-btn" onclick="closeVideo()">×</button>
@@ -264,6 +274,10 @@
     </div>
 
     <script>
+        const romanticAudio = document.getElementById("romanticAudio");
+        romanticAudio.volume = 0.21;
+
+
         function playVideo(videoFile) {
             const modal = document.getElementById('videoModal');
             const video = document.getElementById('videoPlayer');
@@ -274,6 +288,10 @@
             video.load();
             note.style.display = 'none';
             modal.style.display = 'flex';
+
+            romanticAudio.pause();
+            romanticAudio.currentTime = 0;
+
             video.play();
         }
 
@@ -287,6 +305,7 @@
         function showNote() {
             document.getElementById('videoModal').style.display = 'none';
             document.getElementById('cuteNote').style.display = 'block';
+            romanticAudio.play().catch(err => console.warn("Music autoplay might be blocked:", err));
         }
     </script>
 </body>
